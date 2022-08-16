@@ -39,10 +39,10 @@ namespace NunitTestproject.TestScripts
         {
             test.Log(Status.Info, " Titan login screen is displayed ");
             TitanLoginpage login = new TitanLoginpage(driver);
-            login.Titanscreenverify();
-            login.Usernametextfield("ABC");  //Wrong username
-            login.Passwordtextfield("123");  //Wrong password
-            login.LogonButton();
+            login.Titan_Screen_Verify();
+            login.Username_Textfield("ABC");  //Wrong username
+            login.Password_Textfield("123");  //Wrong password
+            login.Logon_Button();
             test.Log(Status.Pass, " Titan login screen succesful ");
         }
 
@@ -51,7 +51,7 @@ namespace NunitTestproject.TestScripts
         public void Atg_webconnect_screen()
         {
             AtgWebconnectPage atg = new AtgWebconnectPage(driver);
-            atg.Atg_text_verify();
+            atg.Atg_Webconnect_Screen();
         }
 
 
@@ -67,8 +67,8 @@ namespace NunitTestproject.TestScripts
         [TearDown]
         public void Tests_validation()
         {
-            TestStatusValidation validate = new TestStatusValidation();
-            validate.Tests_validation(driver,test);
+   
+            TestStatusValidation.Tests_validation(driver,test);
         }
 
         

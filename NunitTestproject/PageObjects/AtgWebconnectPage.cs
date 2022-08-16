@@ -62,7 +62,7 @@ namespace Selenium_Csharp_POC.PageObjects
             Atg_Webconnect_Screen();
             Iframe_Username(un);
             Iframe_Passsword(pwd);
-            Iframe_Signin_button();
+            Iframe_Signin_Button();
         }
     }
 

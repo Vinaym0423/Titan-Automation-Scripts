@@ -16,7 +16,7 @@ using AventStack.ExtentReports.Reporter;
 namespace Selenium_Csharp_POC.TestScripts
 {
     [TestFixture]
-    public class Class1 : TestStatusValidation
+    public class Evo600_UI_Scenario : TestStatusValidation
     {
         public IWebDriver driver;
         public ExtentReports extent;
