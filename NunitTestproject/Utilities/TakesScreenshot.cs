@@ -12,7 +12,7 @@ namespace NunitTestproject.Utilities
         public static string takescreenshot(string type, IWebDriver driver)
         {
             Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
-            string path = $"C:\\Users\\Admin\\Csharp\\NunitTestproject\\NunitTestproject\\Screenshots\\{type}.png";
+            string path = $"D:\\Titan Automation\\Titan-Automation-Scripts\\NunitTestproject\\Screenshots\\{type}.png";
            //string path = $"D:\\Screenshots\\{type}.png";
             ss.SaveAsFile(path, ScreenshotImageFormat.Png);
             

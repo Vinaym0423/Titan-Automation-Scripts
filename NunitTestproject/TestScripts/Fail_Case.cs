@@ -28,7 +28,8 @@ namespace NunitTestproject.TestScripts
             driver.Url = "https://demooilcompany.mytitan.net/app/ATGWebConnect.aspx?facility=188141";
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(8);
             extent = new ExtentReports(); //Extent Reports object creation
-            var htmlreporter = new ExtentHtmlReporter(@"C:\Users\Admin\Csharp\NunitTestproject\NunitTestproject\Reports\Reports.html");
+            string reportpath = "D:/Titan Automation/Titan-Automation-Scripts/NunitTestproject//Reports/Reports.html";
+            var htmlreporter = new ExtentHtmlReporter(@reportpath);
             extent.AttachReporter(htmlreporter);
             test =extent.CreateTest("Ui scenario for Failed/Skipped Cases");   
         }
@@ -38,7 +39,7 @@ namespace NunitTestproject.TestScripts
         public void Titan_Screen()
         {
             test.Log(Status.Info, " Titan login screen is displayed ");
-            TitanLoginpage login = new TitanLoginpage(driver);
+            Titan_Login_Page login = new Titan_Login_Page(driver);
             login.Titan_Screen_Verify();
             login.Username_Textfield("ABC");  //Wrong username
             login.Password_Textfield("123");  //Wrong password
@@ -50,7 +51,7 @@ namespace NunitTestproject.TestScripts
         [Test,Order(2)]
         public void Atg_webconnect_screen()
         {
-            AtgWebconnectPage atg = new AtgWebconnectPage(driver);
+            Atg_Webconnect_Page atg = new Atg_Webconnect_Page(driver);
             atg.Atg_Webconnect_Screen();
         }
 

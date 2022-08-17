@@ -30,7 +30,8 @@ namespace Selenium_Csharp_POC.TestScripts
             driver.Url = "https://demooilcompany.mytitan.net/app/ATGWebConnect.aspx?facility=188141";  //Navigate to url
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(8);   //Waiter for inspecting the lately loading elements
             extent = new ExtentReports(); //Extent Reports object creation
-            var htmlreporter = new ExtentHtmlReporter(@"C:\Users\Admin\Csharp\NunitTestproject\NunitTestproject\Reports\Reports.html");
+            string reportpath = "D:/Titan Automation/Titan-Automation-Scripts/NunitTestproject/Reports/Reports.html";
+            var htmlreporter = new ExtentHtmlReporter(@reportpath);
             extent.AttachReporter(htmlreporter);
             this.test = extent.CreateTest("UI Scenario of 'FFS EVO 600' Tank Status Verification"); //Test name in Extent report 
         }
@@ -39,7 +40,7 @@ namespace Selenium_Csharp_POC.TestScripts
         [Test, Order(1)]
         public void Titanlogin()
         {
-            TitanLoginpage login = new TitanLoginpage(driver);
+            Titan_Login_Page login = new Titan_Login_Page(driver);
             login.Titan_Screen_Verify(); //Verify the Titan login screen displayed
             login.Username_Textfield("GaugeTesting2"); //Provide username
             login.Password_Textfield("Testing123!"); //Provide password
@@ -51,7 +52,7 @@ namespace Selenium_Csharp_POC.TestScripts
         [Test, Order(2)]
         public void Evo600_iframe()
         {
-            AtgWebconnectPage atg = new AtgWebconnectPage(driver);
+            Atg_Webconnect_Page atg = new Atg_Webconnect_Page(driver);
             atg.Atg_Webconnect_Screen();  //Verify the ATG WEBCONNECT screen
             driver.SwitchTo().Frame(0);  //Switch the driver to IFrame
             atg.Iframe_Username("admin");  //Provide username in Iframe
