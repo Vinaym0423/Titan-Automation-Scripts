@@ -2,8 +2,6 @@
 using AventStack.ExtentReports.Reporter;
 using AventStack.ExtentReports.MarkupUtils;
 using NUnit.Framework;
-using NUnit.Framework.Interfaces;
-using NunitTestproject.Utilities;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -14,7 +12,7 @@ using Xunit.Sdk;
 namespace NunitTestproject.TestScripts
 {
     [TestFixture]
-    public class Fail_Case
+    public class Fail_Case 
     {
         public IWebDriver driver;
         public ExtentReports extent;
@@ -27,11 +25,7 @@ namespace NunitTestproject.TestScripts
             driver = new ChromeDriver();
             driver.Url = "https://demooilcompany.mytitan.net/app/ATGWebConnect.aspx?facility=188141";
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(8);
-            extent = new ExtentReports(); //Extent Reports object creation
-            string reportpath = "D:/Titan Automation/Titan-Automation-Scripts/NunitTestproject//Reports/Reports.html";
-            var htmlreporter = new ExtentHtmlReporter(@reportpath);
-            extent.AttachReporter(htmlreporter);
-            test =extent.CreateTest("Ui scenario for Failed/Skipped Cases");   
+         test = BaseClass.Extent_reports("Failed Cases");
         }
 
         //Wrong titan credentials provided for tests failure
@@ -69,7 +63,7 @@ namespace NunitTestproject.TestScripts
         public void Tests_validation()
         {
    
-            TestStatusValidation.Tests_validation(driver,test);
+            BaseClass.Tests_Status_Validation(driver,test);
         }
 
         

@@ -21,7 +21,7 @@ namespace Selenium_Csharp_POC.PageObjects
         [FindsBy(How = How.XPath, Using = "//a[@href='https://demooilcompany.mytitan.net/proxy/188141/tg/fms-tank-status/t/1']")]
         public IWebElement Tank1 { get; set; }
 
-        public void Evo600_Tankstatus_Screen()
+        public void Evo600TankstatusScreen()
         {
           Boolean verify =Tankstatustext.Displayed;
             if (verify == true)
@@ -50,7 +50,7 @@ namespace Selenium_Csharp_POC.PageObjects
         //All methods are  called in single method 
         public void Evo600_tanksStatus()
         {
-            Evo600_Tankstatus_Screen();
+            Evo600TankstatusScreen();
             Evo600_Tankstatus_Verify();
         }
     }

@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Selenium_Csharp_POC.PageObjects;
-using NunitTestproject.Utilities;
 using NUnit.Framework.Interfaces;
 using Selenium_Csharp_POC.Utilities;
 using AventStack.ExtentReports;
@@ -16,7 +15,7 @@ using AventStack.ExtentReports.Reporter;
 namespace Selenium_Csharp_POC.TestScripts
 {
     [TestFixture]
-    public class Evo600_UI_Scenario : TestStatusValidation
+    public class Evo600_UI_Scenario : Extent_Class
     {
         public IWebDriver driver;
         public ExtentReports extent;
@@ -29,11 +28,9 @@ namespace Selenium_Csharp_POC.TestScripts
             driver = new ChromeDriver(); //Launch the browser
             driver.Url = "https://demooilcompany.mytitan.net/app/ATGWebConnect.aspx?facility=188141";  //Navigate to url
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(8);   //Waiter for inspecting the lately loading elements
-            extent = new ExtentReports(); //Extent Reports object creation
-            string reportpath = "D:/Titan Automation/Titan-Automation-Scripts/NunitTestproject/Reports/Reports.html";
-            var htmlreporter = new ExtentHtmlReporter(@reportpath);
-            extent.AttachReporter(htmlreporter);
-            this.test = extent.CreateTest("UI Scenario of 'FFS EVO 600' Tank Status Verification"); //Test name in Extent report 
+          test = Extent_Class.Report();
+
+
         }
 
         //Titan Login Screen
@@ -65,9 +62,9 @@ namespace Selenium_Csharp_POC.TestScripts
         public void Evo600_TankStatus()
         {
             Evo600_Tankstatus_page status = new Evo600_Tankstatus_page(driver);
-            status.Evo600_Tankstatus_Screen();  //Verify the Tankstatus screen is displayed
+            status.Evo600TankstatusScreen();  //Verify the Tankstatus screen is displayed
             status.Evo600_Tankstatus_Verify();  //Verify the Tanks status is displayed
-            TestStatusValidation.Final_step(driver, test);
+            
         }
 
 
@@ -76,8 +73,8 @@ namespace Selenium_Csharp_POC.TestScripts
         [TearDown]
         public void Tests_validation()
         {
-          
-            TestStatusValidation.Tests_validation(driver, test);
+
+            BaseClass.Tests_Status_Validation(driver, test);
 
         }
 
@@ -85,8 +82,9 @@ namespace Selenium_Csharp_POC.TestScripts
         [OneTimeTearDown]
         public void Teardown()
         {
-            extent.Flush();    //Refresh the extent reports
-            driver.Close();   //close the browser
+            driver.Close();  //Refresh the extent reports
+            extent.Flush();   //close the browser
+
         }
     }
 }
